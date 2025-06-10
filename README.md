@@ -11,7 +11,7 @@ Dashboard Angular que integra Jenkins y SonarQube para monitorización de calida
 
 ## Tecnologías Utilizadas
 
-- Angular 17
+- Angular 20
 - Docker
 - Jenkins
 - SonarQube
