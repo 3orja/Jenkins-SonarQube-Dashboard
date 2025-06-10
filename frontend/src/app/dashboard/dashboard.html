@@ -1,0 +1,51 @@
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dashboard</h1>
+  
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Cargando datos...</p>
+  </div>
+
+  <div *ngIf="!loading" class="dashboard-grid">
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Resumen</h2>
+      </div>
+      <div class="card-body">
+        <app-chart [chartData]="dashboardData?.summary" [chartType]="'pie'"></app-chart>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Rendimiento</h2>
+      </div>
+      <div class="card-body">
+        <app-chart [chartData]="dashboardData?.performance" [chartType]="'line'"></app-chart>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Estadísticas</h2>
+      </div>
+      <div class="card-body">
+        <app-chart [chartData]="dashboardData?.statistics" [chartType]="'bar'"></app-chart>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Actividad Reciente</h2>
+      </div>
+      <div class="card-body">
+        <div class="activity-list">
+          <div *ngFor="let activity of dashboardData?.activities" class="activity-item">
+            <div class="activity-time">{{ activity.time | date:'short' }}</div>
+            <div class="activity-description">{{ activity.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

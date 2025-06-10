@@ -1,0 +1,65 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <i class="bi bi-speedometer2"></i>
+      <span *ngIf="!isCollapsed" class="sidebar-title">Dashboard</span>
+    </div>
+    <button class="collapse-button" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'"></i>
+    </button>
+  </div>
+
+  <div class="sidebar-content">
+    <div class="menu-section">
+      <h6 *ngIf="!isCollapsed" class="menu-section-title">PRINCIPAL</h6>
+      <ul class="sidebar-nav">
+        <li class="nav-item" *ngFor="let item of mainItems">
+          <a [routerLink]="item.link" routerLinkActive="active" class="nav-link">
+            <i class="bi {{ item.icon }}"></i>
+            <span *ngIf="!isCollapsed" class="nav-item-label">{{ item.label }}</span>
+            <span *ngIf="item.badge && !isCollapsed" class="badge" [ngClass]="item.badgeType">{{ item.badge }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h6 *ngIf="!isCollapsed" class="menu-section-title">GESTIÓN</h6>
+      <ul class="sidebar-nav">
+        <li class="nav-item" *ngFor="let item of managementItems">
+          <a [routerLink]="item.link" routerLinkActive="active" class="nav-link">
+            <i class="bi {{ item.icon }}"></i>
+            <span *ngIf="!isCollapsed" class="nav-item-label">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="system-info" *ngIf="!isCollapsed">
+      <div class="system-status">
+        <div class="status-item">
+          <span class="status-label">CPU</span>
+          <div class="progress">
+            <div class="progress-bar" [style.width]="'45%'"></div>
+          </div>
+        </div>
+        <div class="status-item">
+          <span class="status-label">MEM</span>
+          <div class="progress">
+            <div class="progress-bar" [style.width]="'65%'"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-footer-actions">
+      <button class="sidebar-footer-button" title="Ajustes">
+        <i class="bi bi-gear"></i>
+      </button>
+      <button class="sidebar-footer-button" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</aside>

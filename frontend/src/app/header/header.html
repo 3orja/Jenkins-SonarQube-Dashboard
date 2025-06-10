@@ -1,0 +1,35 @@
+<header class="dashboard-header">
+  <div class="header-container">
+    <div class="logo-section">
+      <button class="menu-toggle" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+      <a href="#" class="logo">
+        <span class="logo-text">Angular Dashboard</span>
+      </a>
+    </div>
+
+    <div class="search-section">
+      <div class="search-bar">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Buscar...">
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-button">
+        <i class="bi bi-bell"></i>
+        <span class="notification-badge">3</span>
+      </button>
+      <button class="header-button">
+        <i class="bi bi-envelope"></i>
+        <span class="notification-badge">5</span>
+      </button>
+      <div class="user-profile">
+        <img src="assets/profile-avatar.png" alt="Perfil" onerror="this.src='https://via.placeholder.com/32'">
+        <span class="user-name">Usuario</span>
+        <i class="bi bi-chevron-down"></i>
+      </div>
+    </div>
+  </div>
+</header>
