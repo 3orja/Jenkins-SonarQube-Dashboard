@@ -2,9 +2,9 @@ pipeline {
     // Usar "any" para ejecutar directamente en el agente Jenkins
     agent any
     
-    // Configurar herramientas para Node.js
+    // Configurar herramientas para Node.js - usar exactamente el nombre configurado
     tools {
-        nodejs 'NodeJS 20'
+        nodejs 'NodeJS'  // Este nombre debe coincidir con el configurado en Jenkins
     }
     
     environment {
@@ -12,8 +12,16 @@ pipeline {
     }
     
     stages {
-        // No necesitas checkout si usas 'Pipeline script from SCM' en Jenkins
-        // Jenkins hará automáticamente el checkout
+        // Añadir checkout explícito desde el repositorio
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/3orja/Jenkins-SonarQube-Dashboard.git']]
+                ])
+            }
+        }
         
         stage('Install') {
             steps {
